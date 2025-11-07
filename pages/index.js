@@ -1,32 +1,6 @@
-import { gql } from "@apollo/client";
-import client from "client";
-import { BlockRenderer } from "./components/BlockRenderer";
-import { cleanAndTransformBlocks } from "./utils/cleanAndTransformBlocks";
+import { Page } from "./components/Page";
+import { getPageStaticProps } from "./utils/getPageStaticProps";
 
-export default function Home(props) {
-  console.log("Props: ", props.blocks);
-  // props.blocks é um array
-  return <div>
-    <BlockRenderer blocks={props.blocks} />
-  </div>;
-}
+export default Page;
 
-export const getStaticProps = async () => {
-  const {data} = await client.query({
-    query: gql`
-      query NewQuery {
-        nodeByUri(uri: "/") {
-          ... on Page {
-            id
-            blocks(postTemplate: false)
-          }
-        }
-      }   
-    `
-  })
-  return {
-    props: {
-      blocks: cleanAndTransformBlocks(data.nodeByUri.blocks),
-    }
-  }
-}
+export const getStaticProps = getPageStaticProps;
