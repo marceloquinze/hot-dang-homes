@@ -53,6 +53,7 @@ export const BlockRenderer = ({blocks}) => {
 						textColor={theme[block.attributes.textColor] || block.attributes.style?.color?.text}
 						/>
 			}
+			case 'core/post-title':
 			case 'core/heading': {
 				return <Heading 
 						key={block.id} 

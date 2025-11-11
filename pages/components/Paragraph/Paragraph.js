@@ -1,5 +1,5 @@
-import { getTextAlign } from "pages/utils/fonts"
-import { relativeToAbsoluteUrls } from "pages/utils/relativeToAbsoluteUrls"
+import { getTextAlign } from "../../../utils/fonts"
+import { relativeToAbsoluteUrls } from "../../../utils/relativeToAbsoluteUrls"
 
 export const Paragraph = ({textAlign = "left", textColor, content}) => {
 	return (

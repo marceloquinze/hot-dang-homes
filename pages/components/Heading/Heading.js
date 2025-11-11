@@ -1,5 +1,5 @@
 import React from 'react'; // Importa a biblioteca React
-import { getFontSizeForHeading, getTextAlign } from "pages/utils/fonts"; // Importa as funções getFontSizeForHeading e getTextAlign
+import { getFontSizeForHeading, getTextAlign } from "../../../utils/fonts"; // Importa as funções getFontSizeForHeading e getTextAlign
 
 export const Heading = ({ textAlign, content, level = 2 }) => { // Define uma constante chamada Heading que é uma função de componente de React
   const tag = React.createElement( // Cria um elemento React usando React.createElement

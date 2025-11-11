@@ -4,7 +4,7 @@ import { cleanAndTransformBlocks } from "./cleanAndTransformBlocks";
 import { mapMainMenuItems } from "./mapMainMenuItems";
 
 export const getPageStaticProps = async (context) => {
-	const uri = context.params?.slug ? `/${context.params.slug.join("/")}/ ` : "/";
+	const uri = context.params?.slug ? `/${context.params.slug.join("/")}/` : "/";
 
   const {data} = await client.query({
     query: gql`
@@ -12,6 +12,11 @@ export const getPageStaticProps = async (context) => {
         nodeByUri(uri: $uri) {
           ... on Page {
             id
+            blocks(postTemplate: false)
+          }
+          ... on Property {
+            id
+            title
             blocks(postTemplate: false)
           }
         }
