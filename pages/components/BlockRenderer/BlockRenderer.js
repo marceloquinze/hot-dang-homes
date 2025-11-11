@@ -2,10 +2,19 @@ import { theme } from "theme";
 import { Cover } from "../Cover";
 import { Heading } from "../Heading";
 import { Paragraph } from "../Paragraph";
+import { CallToActionButton } from "../CallToActionButton";
 
 export const BlockRenderer = ({blocks}) => {
 	return blocks.map( block =>{
 		switch (block.name) {
+			case 'acf/ctabutton': {
+				return <CallToActionButton 
+						key={block.id} 
+						buttonLabel={block.attributes.data.label} 
+						destination={block.attributes.data.destination || "/"} 
+						align={block.attributes.data.align} 
+					/>
+			}
 			case 'core/paragraph': {
 				return <Paragraph 
 						key={block.id}
@@ -28,6 +37,7 @@ export const BlockRenderer = ({blocks}) => {
 				</Cover>
 			}
 			default: 
+				console.log("Unknown block: ", block);
 				return null;
 		}
 	})
