@@ -6,6 +6,7 @@ import { CallToActionButton } from "../CallToActionButton";
 import { Columns } from "../Columns";
 import { Column } from "../Column";
 import Image from "next/image";
+import { PropertySearch } from "../PropertySearch";
 
 export const BlockRenderer = ({blocks}) => {
 	return blocks.map( block =>{
@@ -60,6 +61,11 @@ export const BlockRenderer = ({blocks}) => {
 						textAlign={block.attributes.textAlign} 
 						level={block.attributes.level} 
 						content={block.attributes.content} 
+						/>
+			}
+			case "acf/propertysearch":{
+				return <PropertySearch 
+						key={block.id} 
 						/>
 			}
 			case 'core/cover': {
