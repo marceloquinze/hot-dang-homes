@@ -7,12 +7,14 @@ const handler = async (req, res) => {
 	// res: status code, returned data etc
 	// then we can return the response from this endpoint to the client that made the request
 	try{
+		const filters = JSON.parse(req.body); // from client, passed in the POST request
+
 		// Apollo client (client.js)
 		// data is contained in the GraphQL WP response
 		const {data} = await client.query({
 			query: gql`
 				query AllPropertiesQuery {
-					properties(where: {offsetPagination: {size: 3, offset: 0}}) {
+					properties(where: {offsetPagination: {size: 3, offset: ${((filters.page || 1) - 1) * 3}}}) {
 						pageInfo {
 							offsetPagination {
 								total
