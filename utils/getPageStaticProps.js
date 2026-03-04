@@ -58,7 +58,7 @@ export const getPageStaticProps = async (context) => {
   })
   return {
     props: {
-      blocks: cleanAndTransformBlocks(data.nodeByUri.blocks),
+      blocks: cleanAndTransformBlocks(data.nodeByUri.blocks), // add an id to each block
       mainMenuItems: mapMainMenuItems(data.acfOptionsMainMenu.mainMenu.menuItems),
       callToActionLabel: data.acfOptionsMainMenu.mainMenu.callToActionButton.label,
       callToActionDestination: data.acfOptionsMainMenu.mainMenu.callToActionButton.destination.uri
